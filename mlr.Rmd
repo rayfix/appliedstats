@@ -654,18 +654,18 @@ With this in mind, confidence intervals for the individual $\hat{\beta}_j$ are a
 
 As with SLR, creating prediction intervals involves one slight change to the standard error to account for the fact that we are now considering an observation, instead of a mean.
 
-Here we use $\hat{y}(x_0)$ to estimate $Y_0$, a new observation of $Y$ at the predictor vector $x_0$.
+Here we use $\hat{y}_{pred}(x_0)$ to estimate $Y_0$, a new observation of $Y$ at the predictor vector $x_0$.
 
 \[
 \begin{aligned}
-\hat{y}(x_0) &= x_{0}^\top\hat{\beta} \\
+\hat{y}_{pred}(x_0) &= x_{0}^\top\hat{\beta} \\
 &= \hat{\beta}_0 + \hat{\beta}_1 x_{01} + \hat{\beta}_2 x_{02} + \cdots + \hat{\beta}_{p-1} x_{0(p-1)}
 \end{aligned}
 \]
 
 \[
 \begin{aligned}
-\text{E}[\hat{y}(x_0)] &= x_{0}^\top\beta \\
+\text{E}[\hat{y}_{pred}(x_0)] &= x_{0}^\top\beta \\
 &= \beta_0 + \beta_1 x_{01} + \beta_2 x_{02} + \cdots + \beta_{p-1} x_{0(p-1)}
 \end{aligned}
 \]
@@ -673,13 +673,13 @@ Here we use $\hat{y}(x_0)$ to estimate $Y_0$, a new observation of $Y$ at the pr
 As we did with SLR, we need to account for the additional variability of an observation about its mean.
 
 \[
-\text{SE}[\hat{y}(x_0) + \epsilon] = s_e \sqrt{1 + x_{0}^\top\left(X^\top X\right)^{-1}x_{0}}
+\text{SE}[\hat{y}_{pred}(x_0) + \epsilon] = s_e \sqrt{1 + x_{0}^\top\left(X^\top X\right)^{-1}x_{0}}
 \]
 
 Then we arrive at our updated prediction interval for MLR.
 
 \[
-\hat{y}(x_0) \pm t_{\alpha/2, n - p} \cdot s_e \sqrt{1 + x_{0}^\top\left(X^\top X\right)^{-1}x_{0}}
+\hat{y}_{pred}(x_0) \pm t_{\alpha/2, n - p} \cdot s_e \sqrt{1 + x_{0}^\top\left(X^\top X\right)^{-1}x_{0}}
 \]
 
 ```{r}

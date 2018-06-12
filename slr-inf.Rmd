@@ -780,18 +780,18 @@ predict(stop_dist_model, newdata = new_speeds,
 
 Sometimes we would like an interval estimate for a new observation, $Y$, for a particular value of $x$. This is very similar to an interval for the mean response, $\text{E}[Y \mid X = x]$, but different in one very important way.
 
-Our best guess for a new observation is still $\hat{y}(x)$. The estimated mean is still the best prediction we can make. The difference is in the amount of variability. We know that observations will vary about the true regression line according to a $N(0, \sigma^2)$ distribution. Because of this we add an extra factor of $\sigma^2$ to our estimate's variability in order to account for the variability of observations about the regression line.
+Our best guess for a new observation is still $\hat{y}_{pred}(x)$. The estimated mean is still the best prediction we can make. The difference is in the amount of variability. We know that observations will vary about the true regression line according to a $N(0, \sigma^2)$ distribution. Because of this we add an extra factor of $\sigma^2$ to our estimate's variability in order to account for the variability of observations about the regression line.
 
 \[
 \begin{aligned}
-\text{Var}[\hat{y}(x) + \epsilon] &= \text{Var}[\hat{y}(x)] + \text{Var}[\epsilon] \\[2ex]
+\text{Var}[\hat{y}_{pred}(x) + \epsilon] &= \text{Var}[\hat{y}(x)] + \text{Var}[\epsilon] \\[2ex]
 &= \sigma^2 \left(\frac{1}{n}+\frac{(x-\bar{x})^2}{S_{xx}}\right) + \sigma^2 \\[2ex]
 &= \sigma^2 \left(1 + \frac{1}{n}+\frac{(x-\bar{x})^2}{S_{xx}}\right)
 \end{aligned}
 \]
 
 \[
-\hat{y}(x) + \epsilon \sim N \left(\beta_0 + \beta_1 x, \ \sigma^2 \left(1 + \frac{1}{n}+\frac{(x-\bar{x})^2}{S_{xx}}\right) \right)
+\hat{y}_{pred}(x) + \epsilon \sim N \left(\beta_0 + \beta_1 x, \ \sigma^2 \left(1 + \frac{1}{n}+\frac{(x-\bar{x})^2}{S_{xx}}\right) \right)
 \]
 
 \[
@@ -801,7 +801,7 @@ Our best guess for a new observation is still $\hat{y}(x)$. The estimated mean i
 We can then find a **prediction interval** using,
 
 \[
-\hat{y}(x) \pm t_{\alpha/2, n - 2} \cdot s_e\sqrt{1 + \frac{1}{n}+\frac{(x-\bar{x})^2}{S_{xx}}}.
+\hat{y}_{pred}(x) \pm t_{\alpha/2, n - 2} \cdot s_e\sqrt{1 + \frac{1}{n}+\frac{(x-\bar{x})^2}{S_{xx}}}.
 \]
 
 To calculate this for a set of points in `R` notice there is only a minor change in syntax from finding a confidence interval for the mean response.
